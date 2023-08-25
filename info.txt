@@ -1,0 +1,19 @@
+Setupp project
+create node dir - install packageu will allow you to get user input
+npm init
+npm  i prompt-sync (install package for collecting the user input)
+
+//System steps of operations
+//1. deposit moneuyy
+//2. Determine number of lines to bet o
+//3. collect a bet amount
+//4. Spin the slot machine
+//5. Check if the user won or lost
+//6. if won +> give users there winning
+//7. play again
+
+
+default const variable is a string
+
+let = adjus the values of this variable
+
