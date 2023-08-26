@@ -91,8 +91,9 @@ const spin = () => {
         }
     }
    // console.log(symbols);
-   const reels = [[],[],[]];
+   const reels = [];
     for(let i = 0; i< COLS; i++){//generate values of each column
+        reels.push([]);
         const reelSymbols = [...symbols];
         for(let j =0; j<ROWS; j++){
             //Math.floor(Math.random() * (max - min + 1)) + min, where min is the minimum value and max is the maximum value
@@ -105,14 +106,36 @@ const spin = () => {
     } 
     return reels;
 };
+//transpose matrix (2d array)
+//transpose array to clearly show the user their latest spin results.
 
-const reels = spin();
-console.log(reels);
+/*
+[[a, b, c], [d, d, d], [a, a, a]]
+[a, d, a]
+[b, d, a]
+[c, d, a]
+*/
+
+ const transposeReels = (reels) => {
+    const rows = [];
+    for(let i=0; i<ROWS; i++){
+        rows.push([]);
+        for(let j =0;j<COLS; j++){
+             rows[i].push(reels[j][i]);
+        }
+    }
+    return rows;
+ };
 
 let balance = deposit();
 const lines = getNumberOfLines();
 const bet = getBet();
+const reels = spin();
+const rows = transposeReels(reels);
+
 
 console.log(lines);
 console.log(balance);
 console.log(bet);
+console.log(reels);
+console.log(rows);
