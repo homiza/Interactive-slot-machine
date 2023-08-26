@@ -15,6 +15,25 @@ function deposit0(){
 //import package
 const prompt = require("prompt-sync")();
 
+const ROWS = 3;
+const COLS = 3;
+
+// number of symbols in each wheel
+const SYMBOLS_COUNT = {
+    A: 2,
+    B: 4,
+    C: 6,
+    D: 8
+}
+
+// symbols payout multuiplier (bet * value)
+
+const SYMBOLS_VALUES = {
+    A: 5,
+    5: 4,
+    C: 6,
+    D: 2
+}
 
 const deposit = () => {
     while(true){
@@ -61,6 +80,34 @@ const getBet = (balance, lines) => {
      } 
     };
 
+// spin function
+
+const spin = () => {
+    const symbols = [];
+    for(const[symbol, count] of Object.entries(SYMBOLS_COUNT)){
+        //console.log(symbol, count);
+        for(let i = 0; i < count; i++){
+            symbols.push(symbol);
+        }
+    }
+   // console.log(symbols);
+   const reels = [[],[],[]];
+    for(let i = 0; i< COLS; i++){//generate values of each column
+        const reelSymbols = [...symbols];
+        for(let j =0; j<ROWS; j++){
+            //Math.floor(Math.random() * (max - min + 1)) + min, where min is the minimum value and max is the maximum value
+            const randomIndex = Math.floor(Math.random() * reelSymbols.length);// round= down so that you never a value greater than the length
+            const selectedSymbol = reelSymbols[randomIndex];
+            reels[i].push(selectedSymbol);
+            reelSymbols.splice(randomIndex, 1);
+
+        }
+    } 
+    return reels;
+};
+
+const reels = spin();
+console.log(reels);
 
 let balance = deposit();
 const lines = getNumberOfLines();

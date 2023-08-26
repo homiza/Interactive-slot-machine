@@ -17,3 +17,4 @@ default const variable is a string
 
 let = adjus the values of this variable
 
+keep all imports libraries at the top of the program, then the global variables
