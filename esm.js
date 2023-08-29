@@ -127,9 +127,21 @@ const spin = () => {
     return rows;
  };
 
+const printRows = (rows) => {
+    for(const row of rows){
+        let rowString = "";
+        for(const[i, symbol] of row.entries()){
+            rowString += symbol;
+            if(i != row.length - 1){
+                rowString += " | ";
+            }
+        } console.log(rowString);
+    }
+};
+
 let balance = deposit();
 const lines = getNumberOfLines();
-const bet = getBet();
+const bet = getBet(balance, lines);
 const reels = spin();
 const rows = transposeReels(reels);
 
@@ -139,3 +151,4 @@ console.log(balance);
 console.log(bet);
 console.log(reels);
 console.log(rows);
+printRows(rows);
